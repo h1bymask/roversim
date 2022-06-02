@@ -8,6 +8,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+
 namespace MoonSurface
 {
     class Program : GameWindow
@@ -53,6 +54,8 @@ namespace MoonSurface
 
         protected override void OnLoad(EventArgs e)
         {
+            GL.Enable(EnableCap.DepthTest);
+            GL.DepthFunc(DepthFunction.Less);
             //GL.Enable(EnableCap.DepthTest);
             //GL.DepthFunc(DepthFunction.Less);
             //_vertexBufferObject = GL.GenBuffer();
@@ -68,7 +71,10 @@ namespace MoonSurface
             camera = new Camera(new Vector3(0, 100/*terrain.getHeightAtPosition(256, 256)*/, 0), Width / (float)Height);//положение камеры начальное
             //textFrame = new TextFrame();
             car = new Car();
-            
+
+            car.load();
+            terrain.load();
+
             CursorVisible = false;
 
             carPosition.X = terrain.returnInitialCoord().X;
@@ -82,8 +88,6 @@ namespace MoonSurface
             GL.Clear(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit);
 
             //textFrame.load();
-            car.load();
-            terrain.load();
 
             //textFrame = new TextFrame();
 

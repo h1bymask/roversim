@@ -55,8 +55,8 @@ namespace MoonSurface
 
         public void load()
         {
-            GL.Enable(EnableCap.DepthTest);
-            GL.DepthFunc(DepthFunction.Less);
+            //GL.Enable(EnableCap.DepthTest);
+            //GL.DepthFunc(DepthFunction.Less);
             //GL.BindBuffer(BufferTarget.ArrayBuffer, _vertexBufferObject);
             _carshader.Use();
             GL.GenVertexArrays(1, out _vaocar);
